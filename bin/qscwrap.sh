@@ -32,8 +32,9 @@ echo qmlog: $qmlog
 
 
 # output
-qmout=$(ipfs add -Q -w -r $rundir)
+qmout=$(ipfs add -Q -r $rundir)
+qmwrap=$(ipfs add -Q -n -w -r $rundir)
 echo qmout: $qmout
-echo url: http://localhost:8080/ipfs/$qmout/${rundir##*/}
+echo url: http://localhost:8080/ipfs/$qmwrap/${rundir##*/}
 
 
