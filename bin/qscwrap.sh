@@ -3,7 +3,7 @@
 tic=$(date +%s)
 min=$(expr \( $tic / 60 \) % 1440)
 pgm=${0##*/}
-p3=$(echo $pgm|cur -c-3)
+p3=$(echo $pgm|cut -c-3)
 rundir=/tmp/$p3$min
 runme='./runme.sh'
 logf=${runme%.*}.log
@@ -25,7 +25,7 @@ cd $rundir
 if [ -e $runme ]; then
 qmrun=$(ipfs add -Q $runme)
 chmod a+x $runme
-sh -xe $runme | tee $logf
+sh -e $runme | tee $logf
 fi
 qmlog=$(ipfs add -Q $logf)
 echo qmlog: $qmlog
